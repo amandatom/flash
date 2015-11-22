@@ -1,0 +1,33 @@
+<!-- Author: Amanda Tom
+  Last Updated: 30/10/2015
+  This page displays a specific photo and its details and has a button to delete the photo
+-->
+<div class="container" style="padding-left: 10px;">
+  <div>
+    <h1>Flash</h1>
+  </div>
+  <!-- Breadcrumb to link back to Home page -->
+  <ol class="breadcrumb">
+    <li><%= link_to "Home", albums_path %> > </li>
+    <% if @photo.album.nil? %>
+    <li><%= link_to @photo.album.name, album_path(@photo.album.id) %> > </li>
+    <% end %>
+    <li class="active"><%= @photo.title %></li>
+  </ol>
+  <!-- displays the title of the photo -->
+  <div>
+    <h3><%= @photo.title %></h3>
+  </div>
+  <!-- displays the date the photo was taken on -->
+  <div>
+    <h4>Taken on: <%= @photo.created_date %></h4>
+  </div>
+  <!-- generates a button that will call the destroy method in the photos controller -->
+  <div>
+    <%= button_to "Delete", @photo, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{@photo.title}?" %>
+  </div>
+  <!-- displays the full sized image -->
+  <div style="padding-bottom: 20px;">
+    <%= image_tag @photo.filename_url %>
+  </div>
+</div>

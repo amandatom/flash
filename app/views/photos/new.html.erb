@@ -1,0 +1,42 @@
+<!-- Author: Amanda Tom
+   Last Updated: 02/11/2015
+   This page gets a user to input the title and date taken of a photo and upload the file 
+-->
+<!-- only display if there are errors -->
+<% if !@photo.errors.empty? %>
+<!-- display errors -->
+   <div class = "alert alert-error">
+      <ul>
+         <% @photo.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+         <% end %>
+      </ul>
+   </div>
+<% end %>
+<div class="container">
+   <div>
+      <h1>Flash</h1>
+   </div>
+   <!-- Breadcrumb to link back to Home page -->
+   <ol class="breadcrumb">
+      <li><%= link_to "Home", albums_path %></li>
+   </ol>
+   <div>
+      <h3>Upload New Photo</h3>
+   </div>
+   <!-- form for uploading new photo -->
+   <div class = "well">
+      <%= form_for @photo, html: { multipart: true } do |f| %>
+        <%= f.hidden_field :album_id %>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+        <%= f.label "Date taken" %>
+        <%= f.date_select :created_date %>
+        <%= f.label :filename %>
+        <%= f.file_field :filename %>
+        <br />
+        <br />
+        <%= f.submit "Upload", class: "btn btn-primary" %>
+      <% end %>
+   </div>
+</div>

@@ -1,0 +1,8 @@
+<!-- Author: Amanda Tom
+   Last Updated: 07/11/2015
+   This page displays all photos in a specific album
+-->
+<!-- iterator to display a thumbnail of all of the photos -->
+<% @album.photos.each do |photo| %>
+  <%= link_to image_tag(photo.filename_url(:thumb)), photo_path(photo), :style => "padding: 10px;"%>
+<% end %>

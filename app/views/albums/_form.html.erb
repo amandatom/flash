@@ -1,0 +1,29 @@
+<!-- Author: Amanda Tom
+   Last Updated: 07/11/2015
+   This page is a form to be used for creating a new album
+-->
+<%= form_for(@album) do |f| %>
+<!-- display errors is there are any -->
+  <% if @album.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
+      <ul>
+      <% @album.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!-- get album information -->
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :created_date %><br>
+    <%= f.date_select :created_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>

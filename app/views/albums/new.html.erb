@@ -1,0 +1,19 @@
+<!-- Author: Amanda Tom
+   Last Updated: 07/11/2015
+   This page renders a form to be used for creating a new album
+-->
+<div class="container" style="padding-left: 10px;">
+  <div>
+    <h1>Flash</h1>
+  </div>
+  <!-- Breadcrumb to link back to Home page -->
+  <ol class="breadcrumb">
+    <li><%= link_to "Home", albums_path %></li>
+  </ol>
+  <div>
+    <h3>Create New Album</h3>
+  </div>
+  <div>
+    <%= render 'form' %>
+  </div>
+</div>

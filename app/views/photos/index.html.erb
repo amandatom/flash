@@ -1,0 +1,32 @@
+<!-- Author: Amanda Tom
+   Last Updated: 26/10/2015
+   This page displays all photos in the database and has a button to add a new photo
+-->
+<!-- only display if there is a notice -->
+<% if !flash[:notice].blank? %>
+   <div class = "alert alert-info">
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+<div class="container">
+   <div>
+      <h1>Flash</h1>
+   </div>
+   <!-- Breadcrumb to link back to Home page -->
+   <ol class="breadcrumb">
+      <li><%= link_to "Home", photos_path %></li>
+   </ol>
+   <div>
+      <h3>All Photos</h3>
+   </div>
+   <!-- link to upload new photo -->
+   <div style="padding-bottom: 20px;">
+      <%= link_to "New Photo", new_photo_path, class: "btn btn-primary" %>
+   </div>
+   <!-- iterator to display a thumbnail of all of the photos -->
+   <div>
+      <% @photos.each do |photo| %>
+         <%= link_to image_tag(photo.filename_url(:thumb)), photo_path(photo), :style => "padding: 10px;"%>
+      <% end %>
+   </div>
+</div>

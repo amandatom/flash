@@ -1,0 +1,49 @@
+<!-- Author: Amanda Tom
+   Last Updated: 09/11/2015
+   This page displays all albums in the database and has a button to add a new album and buttons to delete albums
+-->
+<!-- only display if there is a notice -->
+<% if !flash[:notice].blank? %>
+  <div class = "alert alert-info">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div class="container" style="padding-left: 10px;">
+  <div>
+    <h1>Flash</h1>
+  </div>
+  <!-- Breadcrumb to link back to Home page -->
+  <ol class="breadcrumb">
+    <li><%= link_to "Home", albums_path %></li>
+  </ol>
+  <div>
+    <h3>All Albums</h3>
+  </div>
+  <!-- link to upload new photo -->
+  <div style="padding-bottom: 20px;">
+    <%= link_to "New Album", new_album_path, class: "btn btn-success" %>
+  </div>
+  <!-- display a table of all of the albums in the db -->
+  <div>
+    <table style="width: 75%; text-align: left;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Created Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <!-- display album name, created date, and a delete button for each album -->
+      <tbody>
+        <% @albums.each do |album| %>
+          <tr>
+            <td><%= link_to album.name, album %></td>
+            <td><%= album.created_date %></td>
+            <td><%= link_to 'Delete', album, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
