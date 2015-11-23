@@ -1,0 +1,32 @@
+<!-- Author: Amanda Tom
+   Last Updated: 19/11/2015
+   This page gets a user to create a new user, allowing them to input a user name and a password 
+-->
+<!-- only display if there are errors -->
+<% if !@user.errors.empty? %>
+<!-- display errors -->
+   <div class = "alert alert-error">
+      <ul>
+         <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+         <% end %>
+      </ul>
+   </div>
+<% end %>
+<div class="container">
+   <div>
+      <h1>Flash</h1>
+   </div>
+   <!-- Breadcrumb to link back to Home page -->
+   <ol class="breadcrumb">
+      <li><%= link_to "Home", users_path %> > </li>
+      <li class="active">Sign Up</li>
+   </ol>
+<div>
+    <h3>Sign Up</h3>
+  </div>
+  <!-- render form for creating new user -->
+  <div class = "well">
+    <%= render 'form' %>
+  </div>
+</div>

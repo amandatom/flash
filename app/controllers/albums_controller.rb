@@ -2,7 +2,7 @@
 # Last Updated: 13/11/2015
 # This file defines all of the methods for Photos
 class AlbumsController < ApplicationController
-  before_action :set_album, only: [:show, :edit, :update, :destroy]
+  before_action :set_album, only: [:show, :destroy]
 
   # action for GET index
   # Last modified: 09/11/2015
@@ -36,10 +36,8 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       if @album.save
         format.html { redirect_to @album, notice: 'Album was successfully created.' }
-        format.json { render :show, status: :created, location: @album }
       else
         format.html { render :new }
-        format.json { render json: @album.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,18 +50,7 @@ class AlbumsController < ApplicationController
     # display notice if successful
     respond_to do |format|
       format.html { redirect_to albums_url, notice: 'Album was successfully destroyed.' }
-      format.json { head :no_content }
     end
-  end
-
-  # action for GET id/edit
-  def edit
-    # not implemented yet
-  end
-
-  # actioin for PATCH/PUT id
-  def update
-    # not implemented yet
   end
 
   private

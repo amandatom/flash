@@ -1,0 +1,8 @@
+# Author: Amanda Tom
+# Last Updated: 23/11/2015
+# This file is filled with sample data to be used for testing
+
+# test User to use in tests
+test:
+  name: test_user
+  password_digest: password

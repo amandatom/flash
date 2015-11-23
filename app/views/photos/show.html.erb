@@ -9,9 +9,7 @@
   <!-- Breadcrumb to link back to Home page -->
   <ol class="breadcrumb">
     <li><%= link_to "Home", albums_path %> > </li>
-    <% if @photo.album.nil? %>
     <li><%= link_to @photo.album.name, album_path(@photo.album.id) %> > </li>
-    <% end %>
     <li class="active"><%= @photo.title %></li>
   </ol>
   <!-- displays the title of the photo -->
